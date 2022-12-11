@@ -1,0 +1,174 @@
+
+
+<section class="vh-200 gradient-custom">
+    <div class="container py-5 h-100">
+      <div class="row justify-content-center align-items-center h-100">
+        <div class="col-12 col-lg-9 col-xl-7">
+          <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+            <div class="card-body p-4 p-md-5">
+              <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 text-danger align-items-center">Registration Form</h3>
+              <form [formGroup]="UserReg" (ngSubmit)="register(UserReg)">
+  
+                <div class="row">
+                  <div class="col-md-6 mb-4">
+  
+                    <div class="form-outline">
+                        <label class="form-label fw-bold" for="Name">User Name:</label>
+                      <input type="text" id="Name" name="userName" formControlName="userName" class="form-control form-control-lg" />
+                      <div *ngIf="UserReg.controls['userName'].invalid && (UserReg.controls['userName'].dirty || UserReg.controls['userName'].touched)" class="alert">
+                        <small class="text-danger"
+                        *ngIf="UserReg.get('userName').hasError('required')">
+                        This field is required.
+                    </small> 
+                    <small class="text-danger"
+                        *ngIf="UserReg.controls['userName']?.errors['maxlength']">
+                        The maximum length for this field is {{UserReg.controls['userName']?.errors['maxlength'].requiredLength}} characters.
+                    </small>
+                    </div>
+                    </div>
+  
+                  </div>
+                  <div class="col-md-6 mb-4">
+  
+                    <div class="form-outline">
+                        <label class="form-label fw-bold" for="MobileNumber">Mobile Number:</label>
+                      <input type="text" name="MobileNummber" formControlName="MobileNo" id="MobileNumber" class="form-control form-control-lg" />
+                      <div *ngIf="UserReg.controls['MobileNo'].invalid && (UserReg.controls['MobileNo'].dirty || UserReg.controls['MobileNo'].touched)" class="alert">
+                        <small class="text-danger"
+                        *ngIf="UserReg.get('MobileNo').hasError('required')">
+                        This field is required.
+                    </small> 
+                    <small class="text-danger"
+                        *ngIf="UserReg.controls['MobileNo']?.errors['pattern']"> 
+                        Enter a Valid Mobile Number
+                    </small>
+                    </div>
+                    </div>
+  
+                  </div>
+                </div>
+  
+                <div class="row">
+                  <div class="col-md-6 mb-4 d-flex align-items-center">
+  
+                    <div class="form-outline datepicker w-100">
+                        <label for="Age" class="form-label fw-bold">Age:</label>
+                      <input type="number" name="Age" formControlName="Age" class="form-control form-control-lg" id="Age" />
+                      <div *ngIf="UserReg.controls['Age'].invalid && (UserReg.controls['Age'].dirty || UserReg.controls['Age'].touched)" class="alert">
+                        <small class="text-danger"
+                        *ngIf="UserReg.get('Age').hasError('required')">
+                        This field is required.
+                    </small> 
+                    <small class="text-danger"
+                        *ngIf="UserReg.controls['Age']?.errors['max']"> 
+                        Maximum 60 Age is Allowed
+                    </small>
+                    <small class="text-danger"
+                    *ngIf="UserReg.controls['Age']?.errors['min']"> 
+                    Minimum 18 Age is Allowed
+                </small>
+                    </div>
+                    </div>
+  
+                  </div>
+                  <div class="col-md-6 mb-4" >
+  
+                    <h6 class="mb-2 pb-1 fw-bold">Gender: </h6>
+  
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" formControlName="Gender" name="Gender" id="femaleGender"
+                        value="Female" checked />
+                      <label class="form-check-label" for="femaleGender">Female</label>
+                    </div>
+  
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" formControlName="Gender" name="Gender" id="maleGender"
+                        value="Male" />
+                      <label class="form-check-label" for="maleGender">Male</label>
+                    </div>
+  
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" formControlName="Gender" name="Gender" id="otherGender"
+                        value="Others" />
+                      <label class="form-check-label" for="otherGender">Other</label>
+                    </div>
+                    <div *ngIf="UserReg.controls['Gender'].invalid && (UserReg.controls['Gender'].dirty || UserReg.controls['Gender'].touched)" class="alert">
+                      <small class="text-danger"
+                      *ngIf="UserReg.get('Gender').hasError('required')">
+                      This field is required.
+                  </small> 
+                  
+                  </div>
+                  </div>
+                </div>
+  
+                <div class="row">
+                  <div class="col-md-6 mb-4 pb-2">
+  
+                    <div class="form-outline">
+                        <label class="form-label fw-bold"  for="emailAddress">Password:</label>
+                      <input type="text" id="emailAddress" name="Password" formControlName="Password" class="form-control form-control-lg" />
+                      <div *ngIf="UserReg.controls['Password'].invalid && (UserReg.controls['Password'].dirty || UserReg.controls['Password'].touched)" class="alert">
+                        <small class="text-danger"
+                        *ngIf="UserReg.get('Password').hasError('required')">
+                        This field is required.
+                    </small> 
+                    <small class="text-danger"
+                        *ngIf="UserReg.controls['Password']?.errors['pattern']"> 
+                      Your Password Must Contain a Uppercase and LowertCase and a Special character
+                    </small>
+                    </div>
+                    </div>
+  
+                  </div>
+                  <div class="col-md-6 mb-4 pb-2">
+  
+                    <div class="form-outline">
+                        <label class="form-label fw-bold" for="phoneNumber">Confirm Password:</label>
+                      <input type="text" name="ConfirmPassword" formControlName="ConfirmPassword" id="phoneNumber" class="form-control form-control-lg" />
+                      <div *ngIf="UserReg.controls['ConfirmPassword'].invalid && (UserReg.controls['ConfirmPassword'].dirty || UserReg.controls['ConfirmPassword'].touched)" class="alert">
+                        <small class="text-danger"
+                        *ngIf="UserReg.get('ConfirmPassword').hasError('required')">
+                        This field is required.
+                    </small> 
+                    <small class="text-danger"
+                        *ngIf="UserReg.controls['ConfirmPassword']?.errors['pattern']"> 
+                      Your Password Must Contain a Uppercase and LowertCase and a Special character
+                    </small>
+                    </div>
+                    </div>
+  
+                  </div>
+                </div>
+  
+                <div class="row">
+                  <div class="col-12">
+                    <div class="form-outline" >
+                        <label class="form-label fw-bold" for="AadhaarNo">Aadhaar Number:</label>
+                        <input type="text" id="AadhaarNo" name="AadhaarNo" formControlName="AadhaarNo" class="form-control form-control-lg" />
+                        <div *ngIf="UserReg.controls['AadhaarNo'].invalid && (UserReg.controls['AadhaarNo'].dirty || UserReg.controls['AadhaarNo'].touched)" class="alert">
+                          <small class="text-danger"
+                          *ngIf="UserReg.get('AadhaarNo').hasError('required')">
+                          This field is required.
+                      </small> 
+                      <small class="text-danger"
+                      *ngIf="UserReg.controls['AadhaarNo']?.errors['minlength']"> 
+                      Minimum 10 digits is required
+                  </small>
+                      </div>
+                      </div>
+                  </div>
+                </div>
+  
+                <div class="mt-4 pt-2">
+                  <input class="btn btn-primary btn-lg" [disabled]="UserReg.invalid" type="submit" value="Register"  />
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <router-outlet></router-outlet>
+
